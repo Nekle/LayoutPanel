@@ -18,6 +18,10 @@
 		603C5F2A17DB1EDA001B4007 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 603C5F2917DB1EDA001B4007 /* Default-568h@2x.png */; };
 		603C5F2D17DB1EDA001B4007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 603C5F2C17DB1EDA001B4007 /* ViewController.m */; };
 		603C5F3017DB1EDA001B4007 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 603C5F2E17DB1EDA001B4007 /* ViewController.xib */; };
+		603C5F3917DB1F1C001B4007 /* StackPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 603C5F3817DB1F1C001B4007 /* StackPanel.m */; };
+		603C5F3B17DB2D5B001B4007 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603C5F3A17DB2D5B001B4007 /* QuartzCore.framework */; };
+		603C5F3D17DB2D69001B4007 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603C5F3C17DB2D69001B4007 /* Reveal.framework */; };
+		603C5F3F17DB2DB2001B4007 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603C5F3E17DB2DB2001B4007 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,11 @@
 		603C5F2B17DB1EDA001B4007 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		603C5F2C17DB1EDA001B4007 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		603C5F2F17DB1EDA001B4007 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		603C5F3717DB1F1C001B4007 /* StackPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackPanel.h; sourceTree = "<group>"; };
+		603C5F3817DB1F1C001B4007 /* StackPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackPanel.m; sourceTree = "<group>"; };
+		603C5F3A17DB2D5B001B4007 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		603C5F3C17DB2D69001B4007 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		603C5F3E17DB2DB2001B4007 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,9 +53,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				603C5F3F17DB2DB2001B4007 /* CFNetwork.framework in Frameworks */,
+				603C5F3B17DB2D5B001B4007 /* QuartzCore.framework in Frameworks */,
 				603C5F1417DB1EDA001B4007 /* UIKit.framework in Frameworks */,
 				603C5F1617DB1EDA001B4007 /* Foundation.framework in Frameworks */,
 				603C5F1817DB1EDA001B4007 /* CoreGraphics.framework in Frameworks */,
+				603C5F3D17DB2D69001B4007 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +68,9 @@
 		603C5F0717DB1EDA001B4007 = {
 			isa = PBXGroup;
 			children = (
+				603C5F3E17DB2DB2001B4007 /* CFNetwork.framework */,
+				603C5F3A17DB2D5B001B4007 /* QuartzCore.framework */,
+				603C5F3617DB1EE8001B4007 /* Panel */,
 				603C5F1917DB1EDA001B4007 /* LayoutPanel */,
 				603C5F1217DB1EDA001B4007 /* Frameworks */,
 				603C5F1117DB1EDA001B4007 /* Products */,
@@ -73,6 +88,7 @@
 		603C5F1217DB1EDA001B4007 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				603C5F3C17DB2D69001B4007 /* Reveal.framework */,
 				603C5F1317DB1EDA001B4007 /* UIKit.framework */,
 				603C5F1517DB1EDA001B4007 /* Foundation.framework */,
 				603C5F1717DB1EDA001B4007 /* CoreGraphics.framework */,
@@ -105,6 +121,15 @@
 				603C5F2917DB1EDA001B4007 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		603C5F3617DB1EE8001B4007 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				603C5F3717DB1F1C001B4007 /* StackPanel.h */,
+				603C5F3817DB1F1C001B4007 /* StackPanel.m */,
+			);
+			name = Panel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +201,7 @@
 				603C5F2017DB1EDA001B4007 /* main.m in Sources */,
 				603C5F2417DB1EDA001B4007 /* AppDelegate.m in Sources */,
 				603C5F2D17DB1EDA001B4007 /* ViewController.m in Sources */,
+				603C5F3917DB1F1C001B4007 /* StackPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +284,14 @@
 		603C5F3417DB1EDA001B4007 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LayoutPanel/LayoutPanel-Prefix.pch";
 				INFOPLIST_FILE = "LayoutPanel/LayoutPanel-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -269,9 +300,14 @@
 		603C5F3517DB1EDA001B4007 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LayoutPanel/LayoutPanel-Prefix.pch";
 				INFOPLIST_FILE = "LayoutPanel/LayoutPanel-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
