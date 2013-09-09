@@ -20,31 +20,31 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)] autorelease];
+    StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)] autorelease];
     stack.backgroundColor = [UIColor grayColor];
-    stack.archor = ehLayoutArchorCenterBottom;
-    stack.flowDirector = eLayoutFlowDirectorHorizonal;
+    stack.archor = evLayoutArchorBottomRight;
+    stack.flowDirector = eLayoutFlowDirectorVertical;
     [self.view addSubview:stack];
     
     UILabel *l1 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     l1.backgroundColor = [UIColor redColor];
     l1.textAlignment = NSTextAlignmentCenter;
     l1.text = @"1";
-    [stack addView:l1];
+    [stack addView:l1 withMargin:LayoutMarginMake(0, 0, 0, 10)];
     
     UILabel *l2 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     l2.backgroundColor = [UIColor blueColor];
     l2.textAlignment = NSTextAlignmentCenter;
     l2.text = @"2";
-    [stack addView:l2];
+    [stack addView:l2 withMargin:LayoutMarginMake(100, 10, 10, 10)];
     
     UILabel *l3 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     l3.backgroundColor = [UIColor greenColor];
     l3.textAlignment = NSTextAlignmentCenter;
     l3.text = @"3";
-    [stack addView:l3];
+    [stack addView:l3 withMargin:LayoutMarginMake(0, 0, 0, 0)];
     
-    
+    /*
     //CGRect frame = self.view.frame;
     StackPanel *stack2 = [[[StackPanel alloc]initWithFrame:CGRectMake(0, 80, 80, 460-80*2)] autorelease];
     stack2.backgroundColor = [UIColor darkGrayColor];
@@ -117,25 +117,22 @@
     stack5.backgroundColor = [UIColor grayColor];
     stack5.flowDirector = eLayoutFlowDirectorVertical;
     stack5.archor = evLayoutArchorCenterCenter;
-    UILabel *l13 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l13.backgroundColor = [UIColor redColor];
-    l13.textAlignment = NSTextAlignmentCenter;
-    l13.text = @"13";
+    UIButton *l13 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [l13 setImage :[UIImage imageNamed:@"safari.png"] forState:UIControlStateNormal ];
+    [l13 sizeToFit];
     [stack5 addView:l13];
-    UILabel *l14 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l14.backgroundColor = [UIColor blueColor];
-    l14.textAlignment = NSTextAlignmentCenter;
-    l14.text = @"14";
+    UIButton *l14 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [l14 setImage :[UIImage imageNamed:@"photos.png"] forState:UIControlStateNormal ];
+    [l14 sizeToFit];
     [stack5 addView:l14];
-    UILabel *l15 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l15.backgroundColor = [UIColor greenColor];
-    l15.text = @"15";
-    l15.textAlignment = NSTextAlignmentCenter;
+    UIButton *l15 = [UIButton buttonWithType:UIButtonTypeCustom] ;
+    [l15 setImage :[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal ];
+    [l15 sizeToFit];
     [stack5 addView:l15];
     
     [self.view addSubview:stack5];
     
-    
+    */
 }
 
 - (void)didReceiveMemoryWarning
