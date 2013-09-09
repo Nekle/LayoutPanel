@@ -8,6 +8,38 @@
 
 #import "StackPanel.h"
 
+
+@implementation LayoutMargin
+@synthesize top;
+@synthesize left;
+@synthesize bottom;
+@synthesize right;
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"[%.1f, %.1f, %.1f, %.1f]", top, left, bottom, right];
+}
+@end
+
+LayoutMargin* LayoutMarginMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+{
+    LayoutMargin *margin = [[[LayoutMargin alloc] init] autorelease];
+    margin.top = top;
+    margin.left = left;
+    margin.bottom = bottom;
+    margin.right = right;
+    return margin;
+}
+
+static CGFloat GetLayoutWidth(CGRect frame, LayoutMargin *margin)
+{
+    return (frame.size.width + margin.left + margin.right);
+}
+
+static CGFloat GetLayoutHeight(CGRect frame, LayoutMargin *margin)
+{
+    return (frame.size.height + margin.top + margin.bottom);
+}
+
 @implementation StackPanel
 
 @synthesize flowDirector;
@@ -49,15 +81,26 @@
 
 -(void)addView:(UIView *)element
 {
+    [self addView:element withMargin:LayoutZero];
+}
+
+- (void)addView:(UIView *)element withMargin:(LayoutMargin*) margin
+{
     if (self.elements == nil){
         self.elements = [[NSMutableArray alloc] init];
     }
+    if (self.margins == nil) {
+        self.margins = [[NSMutableArray alloc] init];
+    }
     
     [self.elements addObject:element];
-    [self updateLayout:element];
+    [self.margins addObject:margin];
+    [self updateLayout:element andMargin:margin];
+    
 }
 
--(void)updateLayout:(UIView*)element
+
+-(void)updateLayout:(UIView*)element andMargin:(LayoutMargin*) margin
 {
     //UIView *element = [self.elements objectAtIndex: self.elements.count - 1];
     CGRect frame = element.frame;
@@ -70,9 +113,9 @@
         element.frame = tmpFrame;
         [self addSubview:element];
         
-        tmpCurrentContentSize.width += frame.size.width;
-        if (frame.size.height > self.currentContentSize.height) {
-            tmpCurrentContentSize.height = frame.size.height;
+        tmpCurrentContentSize.width += GetLayoutWidth(frame, margin);
+        if (GetLayoutHeight(frame, margin) > self.currentContentSize.height) {
+            tmpCurrentContentSize.height = GetLayoutHeight(frame, margin);
         }
         
     } else if (self.flowDirector == eLayoutFlowDirectorVertical){
@@ -81,9 +124,9 @@
         element.frame = tmpFrame;
         [self addSubview:element];
         
-        tmpCurrentContentSize.height += frame.size.height;
-        if (frame.size.width > self.currentContentSize.width) {
-            tmpCurrentContentSize.width = frame.size.width;
+        tmpCurrentContentSize.height += GetLayoutHeight(frame, margin);
+        if (GetLayoutWidth(frame, margin) > self.currentContentSize.width) {
+            tmpCurrentContentSize.width = GetLayoutWidth(frame, margin);
         }
     }
     
@@ -109,9 +152,11 @@
 - (void) updateAllLayout
 {
     NSEnumerator *et =  self.elements.objectEnumerator;
+    NSEnumerator *mt = self.margins.objectEnumerator;
     UIView* element = nil;
-    while ( element  = [et nextObject]) {
-        [self updateLayout:element];
+    LayoutMargin *margin = nil;
+    while ( (element  = [et nextObject]) &&  (margin = [mt nextObject])) {
+        [self updateLayout:element andMargin:margin];
     }
 }
 
@@ -119,41 +164,44 @@
 - (void) updateAllArchor
 {
     NSEnumerator *et =  self.elements.objectEnumerator;
+    NSEnumerator *mt = self.margins.objectEnumerator;
+    
     UIView* element = nil;
+    LayoutMargin *margin = nil;
     CGSize tmpSize = CGSizeZero;
-    while ( element  = [et nextObject]) {
+    while ( (element = [et nextObject]) && (margin = [mt nextObject])) {
         if (self.flowDirector == eLayoutFlowDirectorHorizonal) {
             switch (self.archor) {
                 case ehLayoutArchorLeftCenter:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(tmpSize.width, self.bounds.size.height/2 - frame.size.height/2);
+                        frame.origin = CGPointMake(tmpSize.width+margin.left, self.bounds.size.height/2 - frame.size.height/2);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorLeftTop:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(tmpSize.width, 0);
+                        frame.origin = CGPointMake(tmpSize.width+margin.left, 0+margin.top);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorLeftBottom:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(tmpSize.width, self.bounds.size.height - frame.size.height);
+                        frame.origin = CGPointMake(tmpSize.width+margin.left, self.bounds.size.height - frame.size.height - margin.bottom);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorCenterTop:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(self.bounds.size.width/2-self.currentContentSize.width/2+tmpSize.width, 0);
+                        frame.origin = CGPointMake(self.bounds.size.width/2-self.currentContentSize.width/2+tmpSize.width, 0 + margin.top);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorCenterCenter:
@@ -161,40 +209,39 @@
                         CGRect frame = element.frame;
                         frame.origin = CGPointMake(self.bounds.size.width/2-self.currentContentSize.width/2 + tmpSize.width, self.bounds.size.height/2-frame.size.height/2);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorCenterBottom:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(self.bounds.size.width/2 - self.currentContentSize.width/2 + tmpSize.width, self.bounds.size.height-frame.size.height);
+                        frame.origin = CGPointMake(self.bounds.size.width/2 - self.currentContentSize.width/2 + tmpSize.width, self.bounds.size.height-frame.size.height - margin.bottom);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorRightCenter:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(self.bounds.size.width - self.currentContentSize.width + tmpSize.width, self.bounds.size.height/2 - frame.size.height/2);
+                        frame.origin = CGPointMake(self.bounds.size.width - self.currentContentSize.width + tmpSize.width + margin.left, self.bounds.size.height/2 - frame.size.height/2);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
-                        
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorRightTop:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(self.bounds.size.width - self.currentContentSize.width + tmpSize.width, 0);
+                        frame.origin = CGPointMake(self.bounds.size.width - self.currentContentSize.width + tmpSize.width + margin.left, 0 + margin.top);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                     break;
                 case ehLayoutArchorRightBottom:
                     {
                         CGRect frame = element.frame;
-                        frame.origin = CGPointMake(self.bounds.size.width - self.currentContentSize.width + tmpSize.width, self.bounds.size.height - frame.size.height);
+                        frame.origin = CGPointMake(self.bounds.size.width - self.currentContentSize.width + tmpSize.width+margin.left, self.bounds.size.height - frame.size.height - margin.bottom);
                         element.frame = frame;
-                        tmpSize.width += frame.size.width;
+                        tmpSize.width += GetLayoutWidth(frame, margin);
                     }
                 default:
                     NSLog(@"use error layout archor! goto read the .h file description !!!");
@@ -206,74 +253,74 @@
                     case evLayoutArchorTopCenter:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(self.bounds.size.width/2 - frame.size.width/2, tmpSize.height);
+                            frame.origin = CGPointMake(self.bounds.size.width/2 - frame.size.width/2, tmpSize.height + margin.top);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutWidth(frame, margin);
                         }
                         break;
                     case evLayoutArchorTopLeft:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(0, tmpSize.height);
+                            frame.origin = CGPointMake(0 + margin.left, tmpSize.height + margin.top);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     case evLayoutArchorTopRight:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(self.bounds.size.width - frame.size.width, tmpSize.height);
+                            frame.origin = CGPointMake(self.bounds.size.width - frame.size.width - margin.right, tmpSize.height + margin.top);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     case evLayoutArchorCenterCenter:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(self.bounds.size.width / 2 - frame.size.width / 2, self.bounds.size.height/2 - currentContentSize.height/2 + tmpSize.height);
+                            frame.origin = CGPointMake(self.bounds.size.width / 2 - frame.size.width / 2, self.bounds.size.height/2 - currentContentSize.height/2 + tmpSize.height + margin.top);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     case evLayoutArchorCenterLeft:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(0, self.bounds.size.height/2 - currentContentSize.height/2 + tmpSize.height);
+                            frame.origin = CGPointMake(0 + margin.left, self.bounds.size.height/2 - currentContentSize.height/2 + tmpSize.height);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     case evLayoutArchorCenterRight:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(self.bounds.size.width - frame.size.width, self.bounds.size.height/2 - currentContentSize.height/2 + tmpSize.height);
+                            frame.origin = CGPointMake(self.bounds.size.width - frame.size.width - margin.right, self.bounds.size.height/2 - currentContentSize.height/2 + tmpSize.height);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         
                         }
                         break;
                     case evLayoutArchorBottomCenter:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(self.bounds.size.width / 2 - frame.size.width / 2, self.bounds.size.height - self.currentContentSize.height + tmpSize.height);
+                            frame.origin = CGPointMake(self.bounds.size.width / 2 - frame.size.width / 2, self.bounds.size.height - self.currentContentSize.height + tmpSize.height - margin.bottom);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     case evLayoutArchorBottomLeft:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(0, self.bounds.size.height - self.currentContentSize.height + tmpSize.height);
+                            frame.origin = CGPointMake(0 + margin.left, self.bounds.size.height - self.currentContentSize.height + tmpSize.height );
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     case evLayoutArchorBottomRight:
                         {
                             CGRect frame = element.frame;
-                            frame.origin = CGPointMake(self.bounds.size.width - frame.size.width , self.bounds.size.height - self.currentContentSize.height + tmpSize.height);
+                            frame.origin = CGPointMake(self.bounds.size.width - frame.size.width - margin.right, self.bounds.size.height - self.currentContentSize.height + tmpSize.height - margin.bottom);
                             element.frame = frame;
-                            tmpSize.height += frame.size.height;
+                            tmpSize.height += GetLayoutHeight(frame, margin);
                         }
                         break;
                     default:
