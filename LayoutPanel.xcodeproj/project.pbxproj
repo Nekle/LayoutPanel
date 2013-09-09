@@ -22,6 +22,9 @@
 		603C5F3B17DB2D5B001B4007 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603C5F3A17DB2D5B001B4007 /* QuartzCore.framework */; };
 		603C5F3D17DB2D69001B4007 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603C5F3C17DB2D69001B4007 /* Reveal.framework */; };
 		603C5F3F17DB2DB2001B4007 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603C5F3E17DB2DB2001B4007 /* CFNetwork.framework */; };
+		6098F96717DCA16400485954 /* photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6098F96417DCA16400485954 /* photos.png */; };
+		6098F96817DCA16400485954 /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 6098F96517DCA16400485954 /* safari.png */; };
+		6098F96917DCA16400485954 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 6098F96617DCA16400485954 /* settings.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		603C5F3A17DB2D5B001B4007 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		603C5F3C17DB2D69001B4007 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		603C5F3E17DB2DB2001B4007 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6098F96417DCA16400485954 /* photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photos.png; sourceTree = "<group>"; };
+		6098F96517DCA16400485954 /* safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = safari.png; sourceTree = "<group>"; };
+		6098F96617DCA16400485954 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 		603C5F1A17DB1EDA001B4007 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6098F96417DCA16400485954 /* photos.png */,
+				6098F96517DCA16400485954 /* safari.png */,
+				6098F96617DCA16400485954 /* settings.png */,
 				603C5F1B17DB1EDA001B4007 /* LayoutPanel-Info.plist */,
 				603C5F1C17DB1EDA001B4007 /* InfoPlist.strings */,
 				603C5F1F17DB1EDA001B4007 /* main.m */,
@@ -188,6 +197,9 @@
 				603C5F2817DB1EDA001B4007 /* Default@2x.png in Resources */,
 				603C5F2A17DB1EDA001B4007 /* Default-568h@2x.png in Resources */,
 				603C5F3017DB1EDA001B4007 /* ViewController.xib in Resources */,
+				6098F96717DCA16400485954 /* photos.png in Resources */,
+				6098F96817DCA16400485954 /* safari.png in Resources */,
+				6098F96917DCA16400485954 /* settings.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +344,7 @@
 				603C5F3517DB1EDA001B4007 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
