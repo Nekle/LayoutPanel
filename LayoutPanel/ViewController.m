@@ -22,27 +22,30 @@
     
     StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)] autorelease];
     stack.backgroundColor = [UIColor grayColor];
-    stack.archor = evLayoutArchorBottomRight;
+    stack.archor = evLayoutArchorTopRight;
     stack.flowDirector = eLayoutFlowDirectorVertical;
     [self.view addSubview:stack];
     
     UILabel *l1 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     l1.backgroundColor = [UIColor redColor];
     l1.textAlignment = NSTextAlignmentCenter;
-    l1.text = @"1";
-    [stack addView:l1 withMargin:LayoutMarginMake(0, 0, 0, 10)];
+    l1.text = @"Home";
+    [l1 sizeToFit];
+    [stack addView:l1 withMargin:LayoutMarginMake(30, 0, 0, 2)];
     
     UILabel *l2 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     l2.backgroundColor = [UIColor blueColor];
     l2.textAlignment = NSTextAlignmentCenter;
-    l2.text = @"2";
-    [stack addView:l2 withMargin:LayoutMarginMake(100, 10, 10, 10)];
+    l2.text = @"My Blog";
+    [l2 sizeToFit];
+    [stack addView:l2 withMargin:LayoutMarginMake(30, 0, 0, 2)];
     
     UILabel *l3 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     l3.backgroundColor = [UIColor greenColor];
     l3.textAlignment = NSTextAlignmentCenter;
-    l3.text = @"3";
-    [stack addView:l3 withMargin:LayoutMarginMake(0, 0, 0, 0)];
+    l3.text = @"Topic";
+    [l3 sizeToFit];
+    [stack addView:l3 withMargin:LayoutMarginMake(30, 0, 0, 2)];
     
     /*
     //CGRect frame = self.view.frame;
@@ -112,27 +115,27 @@
     [stack4 addView:l12];
     
     [self.view addSubview:stack4];
-    
-    StackPanel *stack5 = [[[StackPanel alloc]initWithFrame:CGRectMake(80, 80, 320-80*2, 460-80*2)] autorelease];
-    stack5.backgroundColor = [UIColor grayColor];
-    stack5.flowDirector = eLayoutFlowDirectorVertical;
-    stack5.archor = evLayoutArchorCenterCenter;
+    */
+    StackPanel *stack5 = [[[StackPanel alloc]initWithFrame:CGRectMake(0, 460-80, 320, 80)] autorelease];
+    stack5.backgroundColor = [UIColor darkGrayColor];
+    stack5.flowDirector = eLayoutFlowDirectorHorizonal;
+    stack5.archor = ehLayoutArchorCenterTop;
     UIButton *l13 = [UIButton buttonWithType:UIButtonTypeCustom];
     [l13 setImage :[UIImage imageNamed:@"safari.png"] forState:UIControlStateNormal ];
     [l13 sizeToFit];
-    [stack5 addView:l13];
+    [stack5 addView:l13 withMargin:LayoutMarginMake(0, 0, 0, 0)];
     UIButton *l14 = [UIButton buttonWithType:UIButtonTypeCustom];
     [l14 setImage :[UIImage imageNamed:@"photos.png"] forState:UIControlStateNormal ];
     [l14 sizeToFit];
-    [stack5 addView:l14];
+    [stack5 addView:l14 withMargin:LayoutMarginMake(0, 30, 0, 0)];
     UIButton *l15 = [UIButton buttonWithType:UIButtonTypeCustom] ;
     [l15 setImage :[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal ];
     [l15 sizeToFit];
-    [stack5 addView:l15];
+    [stack5 addView:l15 withMargin:LayoutMarginMake(0, 30, 0, 0)];
     
     [self.view addSubview:stack5];
     
-    */
+    
 }
 
 - (void)didReceiveMemoryWarning
