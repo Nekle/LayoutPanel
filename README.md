@@ -12,8 +12,10 @@ LayoutPanel 是一个 view 排布器, 你可以随意的将你的 view 添加到
 `margin` 的设置顺序为[上,左,下,右] 逆时针设置.
 ### use
 #### 1. #import "StackPanel.h"
+
 #### 2. 创建一个 `StackPanel`, 
 >`StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)] autorelease];`
+
 #### 3. 添加 `view` 到 `stack` 中 
 >`[stack addView:button]` 
 这样写, 将使得添加到排布器中的 `button` 的 `margin` 为 `[0, 0, 0, 0]`. 
