@@ -9,40 +9,40 @@ LayoutPanel 是一个 view 排布器, 你可以随意的将你的 view 添加到
 
 ## StackPanel 布局选项
 
-StackPanel 布局分为水平和垂直方式. 
+StackPanel 布局分为水平和垂直方式. <br/>
 <code>
-typedef enum _LayoutFlowDirect
-{
-    eLayoutFlowDirectorVertical, // 垂直
-    eLayoutFlowDirectorHorizonal, // 水平
-}LayoutFlowDirector;
+typedef enum _LayoutFlowDirect <br/>
+{ 								<br/>
+    eLayoutFlowDirectorVertical, // 垂直 <br/>
+    eLayoutFlowDirectorHorizonal, // 水平 <br/>
+}LayoutFlowDirector; <br/>
 </code>
 
-在水平和垂直布局中, 又分为上中下, 左中右对齐方式.
+在水平和垂直布局中, 又分为上中下, 左中右对齐方式. <br/>
 <code>
-typedef enum _LayoutArchor
-{
-    // you can use under values when flowDirector =  eLayoutFlowDirectorHorizonal
-    ehLayoutArchorLeftTop,
-    ehLayoutArchorLeftCenter,
-    ehLayoutArchorLeftBottom,
-    ehLayoutArchorCenterTop,
-    ehLayoutArchorCenterCenter,
-    ehLayoutArchorCenterBottom,
-    ehLayoutArchorRightTop,
-    ehLayoutArchorRightCenter,
-    ehLayoutArchorRightBottom,
-    // you can use under values when flowDirector =  eLayoutFlowDirectorVertical
-    evLayoutArchorTopLeft,
-    evLayoutArchorTopCenter,
-    evLayoutArchorTopRight,
-    evLayoutArchorCenterLeft,
-    evLayoutArchorCenterCenter,
-    evLayoutArchorCenterRight,
-    evLayoutArchorBottomLeft,
-    evLayoutArchorBottomCenter,
-    evLayoutArchorBottomRight,
-}LayoutArchor;
+typedef enum _LayoutArchor <br/>
+{							<br/>
+    // you can use under values when flowDirector =  eLayoutFlowDirectorHorizonal <br/>
+    ehLayoutArchorLeftTop,<br/>
+    ehLayoutArchorLeftCenter,<br/>
+    ehLayoutArchorLeftBottom,<br/>
+    ehLayoutArchorCenterTop, <br/>
+    ehLayoutArchorCenterCenter, <br/>
+    ehLayoutArchorCenterBottom, <br/>
+    ehLayoutArchorRightTop, <br/>
+    ehLayoutArchorRightCenter, <br/>
+    ehLayoutArchorRightBottom, <br/>
+    // you can use under values when flowDirector =  eLayoutFlowDirectorVertical <br/>
+    evLayoutArchorTopLeft, <br/>
+    evLayoutArchorTopCenter, <br/>
+    evLayoutArchorTopRight, <br/>
+    evLayoutArchorCenterLeft, <br/>
+    evLayoutArchorCenterCenter, <br/>
+    evLayoutArchorCenterRight, <br/>
+    evLayoutArchorBottomLeft, <br/>
+    evLayoutArchorBottomCenter, <br/>
+    evLayoutArchorBottomRight, <br/>
+}LayoutArchor; <br/>
 </code>
 
 
