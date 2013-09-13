@@ -10,54 +10,60 @@ LayoutPanel 是一个 view 排布器, 你可以随意的将你的 view 添加到
 ## StackPanel 布局选项
 
 StackPanel 布局分为水平和垂直方式. <br/>
-<code>
-typedef enum _LayoutFlowDirect <br/>
-{ 								<br/>
-    eLayoutFlowDirectorVertical, // 垂直 <br/>
-    eLayoutFlowDirectorHorizonal, // 水平 <br/>
-}LayoutFlowDirector; <br/>
-</code>
+
+```
+typedef enum _LayoutFlowDirect 
+{ 								
+    eLayoutFlowDirectorVertical, // 垂直 
+    eLayoutFlowDirectorHorizonal, // 水平 
+}LayoutFlowDirector; 
+```
 
 在水平和垂直布局中, 又分为上中下, 左中右对齐方式. <br/>
-<code>
-typedef enum _LayoutArchor <br/>
-{							<br/>
-    // you can use under values when flowDirector =  eLayoutFlowDirectorHorizonal <br/>
-    ehLayoutArchorLeftTop,<br/>
-    ehLayoutArchorLeftCenter,<br/>
-    ehLayoutArchorLeftBottom,<br/>
-    ehLayoutArchorCenterTop, <br/>
-    ehLayoutArchorCenterCenter, <br/>
-    ehLayoutArchorCenterBottom, <br/>
-    ehLayoutArchorRightTop, <br/>
-    ehLayoutArchorRightCenter, <br/>
-    ehLayoutArchorRightBottom, <br/>
-    // you can use under values when flowDirector =  eLayoutFlowDirectorVertical <br/>
-    evLayoutArchorTopLeft, <br/>
-    evLayoutArchorTopCenter, <br/>
-    evLayoutArchorTopRight, <br/>
-    evLayoutArchorCenterLeft, <br/>
-    evLayoutArchorCenterCenter, <br/>
-    evLayoutArchorCenterRight, <br/>
-    evLayoutArchorBottomLeft, <br/>
-    evLayoutArchorBottomCenter, <br/>
-    evLayoutArchorBottomRight, <br/>
-}LayoutArchor; <br/>
-</code>
+
+```
+typedef enum _LayoutArchor 
+{							
+    // you can use under values when flowDirector =  eLayoutFlowDirectorHorizonal 
+    ehLayoutArchorLeftTop,
+    ehLayoutArchorLeftCenter,
+    ehLayoutArchorLeftBottom,
+    ehLayoutArchorCenterTop, 
+    ehLayoutArchorCenterCenter, 
+    ehLayoutArchorCenterBottom, 
+    ehLayoutArchorRightTop, 
+    ehLayoutArchorRightCenter, 
+    ehLayoutArchorRightBottom, 
+    // you can use under values when flowDirector =  eLayoutFlowDirectorVertical 
+    evLayoutArchorTopLeft, 
+    evLayoutArchorTopCenter, 
+    evLayoutArchorTopRight, 
+    evLayoutArchorCenterLeft, 
+    evLayoutArchorCenterCenter, 
+    evLayoutArchorCenterRight, 
+    evLayoutArchorBottomLeft, 
+    evLayoutArchorBottomCenter, 
+    evLayoutArchorBottomRight, 
+}LayoutArchor; 
+```
 
 
 ## 增加了排布器中元素的 margin 属性设置, 使得元素的定位更加方便,个性化
 `margin` 的设置顺序为[上,左,下,右] 逆时针设置.
 ### use
-+ 1. #import "StackPanel.h"
++ import "StackPanel.h"
 
-+ 2. 创建一个 `StackPanel`, 
->`StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)] autorelease];`
++ 创建一个 `StackPanel`
 
-+ 3. 添加 `view` 到 `stack` 中 
-`[stack addView:button]` <br/>
-这样写, 将使得添加到排布器中的 `button` 的 `margin` 为 `[0, 0, 0, 0]`. 
-`[stack addView:button withMargin:LayoutMarginMake(10, 10, 10, 10)]` <br/>
+```
+StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)] autorelease];
+```
++ 添加 `view` 到 `stack` 中 
+`[stack addView:button]` 这样写, 将使得添加到排布器中的 `button` 的 `margin` 为 `[0, 0, 0, 0]`. 
+
+```
+[stack addView:button withMargin:LayoutMarginMake(10, 10, 10, 10)] <br/>
+```
 这样写将使得添加到排布器中的 `button` 的 `margin` 为 [10, 10, 10, 10].
 
 
