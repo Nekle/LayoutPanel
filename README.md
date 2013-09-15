@@ -1,3 +1,16 @@
+*TODO*:
+
+1. ~~完成StackPanel.~~ 
+2. 优化StackPanel.
+3. 写一个好的StackPanel Demo.
+4. 完成GridPanel.
+5. 优化GridPanel.
+6. 写一个好的GridPanel Demo.
+7. 完成DockPanel.
+8. 优化DockPanel.
+9. 写一个好的DockPanel Demo.
+10. 写一个介绍博客.
+
 ## 用处
 LayoutPanel 是一个 view 排布器, 你可以随意的将你的 view 添加到里面, 然后指定排布器如何对添加的 view 进行排布.
 使用排布器将使你从繁琐的view 位置计算中解放出来, 使你只要同过指定一个排布方式,就可以对一个或更多的 view 进行定位.
