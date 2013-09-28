@@ -6,7 +6,7 @@
 4. 完成GridPanel.
 5. 优化GridPanel.
 6. 写一个好的GridPanel Demo.
-7. 完成DockPanel.
+7. ~~完成DockPanel.~~
 8. 优化DockPanel.
 9. 写一个好的DockPanel Demo.
 10. 写一个介绍博客.
@@ -79,5 +79,29 @@ StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)
 ```
 这样写将使得添加到排布器中的 `button` 的 `margin` 为 [10, 10, 10, 10].
 
+
+### DockPanel
+#### 说明
+可选择的dock 方式如下:<br/>
+
+```
+typedef enum _DockSideType {
+    DockSideTypeLeft,
+    DockSideTypeRight,
+    DockSideTypeTop,
+    DockSideTypeBottom,
+    DockSideTypeFill,
+}DockSideType;
+```
+当你使用`DockSideTypeLeft`时, 这个 `view` 将在`DockPanel`中最左排布, 并且这个`view`的高度将会和`DockPanel`的高度相同.
+
+#### 使用
+```
+DockPanel *dock = [[DockPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+UILabel *d1 = [[UILabel alloc] initWithFrame:CGRectZero];
+d1.text = @"Left";
+[d1 sizeToFit];
+[dock addView:d1 withMargin:LayoutMarginMake(10, 10, 10, 10) dock:DockSideTypeLeft];
+``` 
 
 
