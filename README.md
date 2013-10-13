@@ -3,7 +3,7 @@
 1. ~~完成StackPanel.~~ 
 2. 优化StackPanel.
 3. 写一个好的StackPanel Demo.
-4. 完成GridPanel.
+4. ~~完成GridPanel.~~
 5. 优化GridPanel.
 6. 写一个好的GridPanel Demo.
 7. ~~完成DockPanel.~~
@@ -103,5 +103,58 @@ d1.text = @"Left";
 [d1 sizeToFit];
 [dock addView:d1 withMargin:LayoutMarginMake(10, 10, 10, 10) dock:DockSideTypeLeft];
 ``` 
+
+### GridPanel
+
+竖屏:<br/>
+
+![img](http://farm3.staticflickr.com/2890/10242773796_bae90f2159.jpg)
+
+横屏:<br/>
+![img](http://farm8.staticflickr.com/7438/10242773856_e5c243a97c.jpg)
+
+**横屏 与 竖屏的切换, 只需要设置frame的高宽, grid 将自动重新计算以适应新的尺寸.**
+
+#### 说明
+可选择的grid 布局方式如下:<br/>
+
+```
+typedef enum _GridLayout
+{
+    eLayoutLeftTop = 0x00,
+    eLayoutLeftCenter = 0x01,
+    eLayoutLeftBottom = 0x02,
+    eLayoutCenterTop = 0x03,
+    eLayoutCenterCenter = 0x04,
+    eLayoutCenterBottom = 0x05,
+    eLayoutRightTop = 0x06,
+    eLayoutRightCenter = 0x07,
+    eLayoutRightBottom = 0x08,
+    
+    eLayoutFillWidth  = 0x4000,
+    eLayoutFillHeight = 0x8000,
+    eLayoutFill = 0x4000 | 0x8000,
+    
+} GridLayoutArchor;
+
+``` 
+Fill 布局方式能够自动根据 grid 大小调整响应的大小以适应grid的变化,
+
+#### 使用
+
+```
+
+GridPanel *grid = [[GridPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    [grid setRows:[[NSMutableArray alloc] initWithObjects:@"60%", @"40%" , nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"40%", @"60%", nil]] ;
+    grid.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:grid];
+    
+    UILabel *name = [[UILabel alloc] init];
+    name.text = @"1";
+    name.textAlignment = NSTextAlignmentCenter;
+    name.backgroundColor = [UIColor greenColor];
+    
+```
+
 
 
