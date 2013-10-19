@@ -7,9 +7,19 @@
 //
 
 #import "ViewController.h"
+#import "PanelUtil.h"
+#import "GridPanel.h"
+
+#import "DockPanel.h"
+
 #import "StackPanel.h"
 
 @interface ViewController ()
+{
+    GridPanel *grid;
+    StackPanel *tstack;
+    DockPanel *dock;
+}
 
 @end
 
@@ -20,121 +30,110 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    StackPanel *stack = [[[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 80, 460)] autorelease];
-    stack.backgroundColor = [UIColor grayColor];
-    stack.archor = evLayoutArchorTopRight;
-    stack.flowDirector = eLayoutFlowDirectorVertical;
-    [self.view addSubview:stack];
+    dock = [[DockPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    dock.backgroundColor = [UIColor grayColor];
     
-    UILabel *l1 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l1.backgroundColor = [UIColor redColor];
-    l1.textAlignment = NSTextAlignmentCenter;
-    l1.text = @"Home";
-    [l1 sizeToFit];
-    [stack addView:l1 withMargin:LayoutMarginMake(30, 0, 0, 2)];
-    
-    UILabel *l2 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l2.backgroundColor = [UIColor blueColor];
-    l2.textAlignment = NSTextAlignmentCenter;
-    l2.text = @"My Blog";
-    [l2 sizeToFit];
-    [stack addView:l2 withMargin:LayoutMarginMake(30, 0, 0, 2)];
-    
-    UILabel *l3 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l3.backgroundColor = [UIColor greenColor];
-    l3.textAlignment = NSTextAlignmentCenter;
-    l3.text = @"Topic";
-    [l3 sizeToFit];
-    [stack addView:l3 withMargin:LayoutMarginMake(30, 0, 0, 2)];
-    
-    /*
-    //CGRect frame = self.view.frame;
-    StackPanel *stack2 = [[[StackPanel alloc]initWithFrame:CGRectMake(0, 80, 80, 460-80*2)] autorelease];
-    stack2.backgroundColor = [UIColor darkGrayColor];
-    stack2.flowDirector = eLayoutFlowDirectorVertical;
-    stack2.archor = evLayoutArchorCenterRight;
-    UILabel *l4 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l4.backgroundColor = [UIColor redColor];
-    l4.textAlignment = NSTextAlignmentCenter;
-    l4.text = @"4";
-    [stack2 addView:l4];
-    UILabel *l5 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l5.backgroundColor = [UIColor blueColor];
-    l5.textAlignment = NSTextAlignmentCenter;
-    l5.text = @"5";
-    [stack2 addView:l5];
-    UILabel *l6 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l6.backgroundColor = [UIColor greenColor];
-    l6.textAlignment = NSTextAlignmentCenter;
-    l6.text = @"6";
-    [stack2 addView:l6];
-    
-    [self.view addSubview:stack2];
-    
-    StackPanel *stack3 = [[[StackPanel alloc]initWithFrame:CGRectMake(0, 460-80, 320, 80)] autorelease];
-    stack3.backgroundColor = [UIColor grayColor];
-    stack3.flowDirector = eLayoutFlowDirectorHorizonal;
-    stack3.archor = ehLayoutArchorCenterTop;
-    UILabel *l7 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l7.backgroundColor = [UIColor redColor];
-    l7.textAlignment = NSTextAlignmentCenter;
-    l7.text = @"7";
-    [stack3 addView:l7];
-    UILabel *l8 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l8.backgroundColor = [UIColor blueColor];
-    l8.textAlignment = NSTextAlignmentCenter;
-    l8.text = @"8";
-    [stack3 addView:l8];
-    UILabel *l9 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l9.backgroundColor = [UIColor greenColor];
-    l9.textAlignment = NSTextAlignmentCenter;
-    l9.text = @"9";
-    [stack3 addView:l9];
-    
-    [self.view addSubview:stack3];
+    UILabel *d1 = [[UILabel alloc] initWithFrame:CGRectZero];
+    d1.text = @"Left";
+    [d1 sizeToFit];
+    [dock addView:d1 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Left];
     
     
-    StackPanel *stack4 = [[[StackPanel alloc]initWithFrame:CGRectMake(320-80, 80, 80, 460-80*2)] autorelease];
-    stack4.backgroundColor = [UIColor darkGrayColor];
-    stack4.flowDirector = eLayoutFlowDirectorVertical;
-    stack4.archor = evLayoutArchorCenterLeft;
-    UILabel *l10 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l10.backgroundColor = [UIColor redColor];
-    l10.textAlignment = NSTextAlignmentCenter;
-    l10.text = @"10";
-    [stack4 addView:l10];
-    UILabel *l11 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l11.backgroundColor = [UIColor blueColor];
-    l11.textAlignment = NSTextAlignmentCenter;
-    l11.text = @"11";
-    [stack4 addView:l11];
-    UILabel *l12 = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
-    l12.backgroundColor = [UIColor greenColor];
-    l12.text = @"12";
-    l12.textAlignment = NSTextAlignmentCenter;
-    [stack4 addView:l12];
+    UILabel *d2 = [[UILabel alloc] initWithFrame:CGRectZero];
+    d2.text = @"right";
+    [d2 sizeToFit];
+    [dock addView:d2 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Right];
     
-    [self.view addSubview:stack4];
-    */
-    StackPanel *stack5 = [[[StackPanel alloc]initWithFrame:CGRectMake(0, 460-80, 320, 80)] autorelease];
-    stack5.backgroundColor = [UIColor darkGrayColor];
-    stack5.flowDirector = eLayoutFlowDirectorHorizonal;
-    stack5.archor = ehLayoutArchorCenterTop;
-    UIButton *l13 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [l13 setImage :[UIImage imageNamed:@"safari.png"] forState:UIControlStateNormal ];
-    [l13 sizeToFit];
-    [stack5 addView:l13 withMargin:LayoutMarginMake(0, 0, 0, 0)];
-    UIButton *l14 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [l14 setImage :[UIImage imageNamed:@"photos.png"] forState:UIControlStateNormal ];
-    [l14 sizeToFit];
-    [stack5 addView:l14 withMargin:LayoutMarginMake(0, 30, 0, 0)];
-    UIButton *l15 = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    [l15 setImage :[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal ];
-    [l15 sizeToFit];
-    [stack5 addView:l15 withMargin:LayoutMarginMake(0, 30, 0, 0)];
     
-    [self.view addSubview:stack5];
+    UILabel *d3 = [[UILabel alloc] initWithFrame:CGRectZero];
+    d3.text = @"top";
+    [d3 sizeToFit];
+    [dock addView:d3 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Top];
     
+    UILabel *d4 = [[UILabel alloc] initWithFrame:CGRectZero];
+    d4.text = @"bottom";
+    [d4 sizeToFit];
+    [dock addView:d4 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Bottom];
+    
+    
+    UILabel *d5 = [[UILabel alloc] initWithFrame:CGRectZero];
+    d5.text = @"fill";
+    [d5 sizeToFit];
+    [dock addView:d5 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Fill];
+    
+    [self.view addSubview:dock];
+    
+    grid = [[GridPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    [grid setRows:[[NSMutableArray alloc] initWithObjects:@"60%", @"40%" , nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"40%", @"60%", nil]] ;
+    grid.backgroundColor = [UIColor whiteColor];
+    // [self.view addSubview:grid];
+    
+    UILabel *name = [[UILabel alloc] init];
+    name.text = @"1";
+    name.textAlignment = NSTextAlignmentCenter;
+    name.backgroundColor = [UIColor greenColor];
+    
+    UILabel *pass = [[UILabel alloc] init];
+    pass.text = @"3";
+    pass.textAlignment = NSTextAlignmentCenter;
+    pass.backgroundColor = [UIColor greenColor];
+    
+    UILabel *nameInput = [[UILabel alloc] init];
+    nameInput.textAlignment = NSTextAlignmentCenter;
+    nameInput.text = @"2";
+    nameInput.backgroundColor = [UIColor greenColor];
+    
+    GridPanel * grid1_1= [[GridPanel alloc] init];
+    [grid1_1 setRows:[[NSMutableArray alloc] initWithObjects:@"30%", @"70%", nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"30%",@"70%", nil]];
+    [grid1_1 setBackgroundColor:[UIColor redColor]];
+    
+    [grid addView:name atRow:0 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_CenterCenter | eGridPanelArchorType_FillAll];
+    [grid addView:nameInput atRow:0 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_CenterCenter | eGridPanelArchorType_FillAll];
+    [grid addView:pass atRow:1 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll];
+    [grid addView:grid1_1 atRow:1 andColumn:1 withMargin:LayoutMarginMake(10, 10, 10, 10) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll];
+    
+    UILabel *name1 = [[UILabel alloc] init];
+    name1.text = @"1";
+    name1.textAlignment = NSTextAlignmentCenter;
+    name1.backgroundColor = [UIColor greenColor];
+    
+    [grid1_1 addView:name1 atRow:0 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
+    
+    UILabel *name2 = [[UILabel alloc] init];
+    name2.text = @"2";
+    name2.textAlignment = NSTextAlignmentCenter;
+    name2.backgroundColor = [UIColor greenColor];
+    [grid1_1 addView:name2 atRow:0 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
+    
+    UILabel *name3 = [[UILabel alloc] init];
+    name3.text = @"3";
+    name3.textAlignment = NSTextAlignmentCenter;
+    name3.backgroundColor = [UIColor greenColor];
+    [grid1_1 addView:name3 atRow:1 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
+    
+    UILabel *name4 = [[UILabel alloc] init];
+    name4.text = @"4";
+    name4.textAlignment = NSTextAlignmentCenter;
+    name4.backgroundColor = [UIColor greenColor];
+    [grid1_1 addView:name4 atRow:1 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
+    
+    
+    tstack = [[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 230)];
+    tstack.backgroundColor = [UIColor redColor];
+    tstack.flowDirector = eStackPanelFlowDirector_BottomToTop;
+    //[self.view addSubview:tstack];
+    
+    UILabel *st1 = [[UILabel alloc] init];
+    st1.text = @"1";
+    [st1 sizeToFit];
+    
+    [tstack addView:st1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eStackPanelArchorType_RightBottom | eStackPanelArchorType_FillAll];
+    
+    UILabel *st2 = [[UILabel alloc] init];
+    st2.text = @"222222";
+    [st2 sizeToFit];
+    
+    [tstack addView:st2 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eStackPanelArchorType_RightBottom | eStackPanelArchorType_FillAll];
     
 }
 
@@ -143,5 +142,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (toInterfaceOrientation == UIDeviceOrientationPortrait) {
+        NSLog(@"v!!!");
+        CGRect frame = grid.frame;
+        frame.size = CGSizeMake(320, 460);
+        grid.frame = frame;
+        tstack.frame = frame;
+        dock.frame = frame;
+    } else if (toInterfaceOrientation == UIDeviceOrientationLandscapeLeft || toInterfaceOrientation == UIDeviceOrientationLandscapeRight)
+    {
+        NSLog(@"h!!!");
+        CGRect frame = grid.frame;
+        frame.size = CGSizeMake(480, 300);
+        grid.frame = frame;
+        tstack.frame = frame;
+        dock.frame = frame;
+    }
+
+}
+
 
 @end
