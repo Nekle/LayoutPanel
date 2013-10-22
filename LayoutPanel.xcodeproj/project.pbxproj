@@ -144,14 +144,14 @@
 		603C5F3617DB1EE8001B4007 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
+				60B7A95C1812B2CD00E19A3D /* DockPanel.h */,
 				60B7A9581812B2CD00E19A3D /* DockPanel.m */,
 				60B7A9591812B2CD00E19A3D /* GridPanel.m */,
 				60B7A95A1812B2CD00E19A3D /* PanelUtil.m */,
+				60B7A95F1812B2CD00E19A3D /* StackPanel.h */,
 				60B7A95B1812B2CD00E19A3D /* StackPanel.m */,
-				60B7A95C1812B2CD00E19A3D /* DockPanel.h */,
 				60B7A95D1812B2CD00E19A3D /* GridPanel.h */,
 				60B7A95E1812B2CD00E19A3D /* PanelUtil.h */,
-				60B7A95F1812B2CD00E19A3D /* StackPanel.h */,
 			);
 			name = Panel;
 			sourceTree = "<group>";

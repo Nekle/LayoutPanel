@@ -16,9 +16,7 @@
 
 @interface ViewController ()
 {
-    GridPanel *grid;
-    StackPanel *tstack;
-    DockPanel *dock;
+    StackPanel *mainPanel;
 }
 
 @end
@@ -30,110 +28,81 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    dock = [[DockPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
-    dock.backgroundColor = [UIColor grayColor];
+    mainPanel = [[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    mainPanel.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
+    mainPanel.flowDirector = eStackPanelFlowDirector_TopToBottom;
+    mainPanel.defaultArchorType = eStackPanelArchorType_CenterTop;
+    [self.view addSubview:mainPanel];
     
-    UILabel *d1 = [[UILabel alloc] initWithFrame:CGRectZero];
-    d1.text = @"Left";
-    [d1 sizeToFit];
-    [dock addView:d1 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Left];
+    UILabel *myname = [[UILabel alloc] init];
+    myname.text = @"这是名字";
+    myname.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
+    myname.textAlignment = NSTextAlignmentCenter;
+    [myname sizeToFit];
+    [mainPanel addView:myname withMargin:LayoutMarginMake(10, 0, 0, 0) archor:eStackPanelArchorType_CenterTop | eStackPanelArchorType_FillWidth ];
     
+    UILabel *mydes = [[UILabel alloc] init];
+    myname.textAlignment = NSTextAlignmentCenter;
+    mydes.lineBreakMode = NSLineBreakByWordWrapping;
+    mydes.text = @"DESCRIPTION: \nstay hungry...stay hungry \nstay hungry...stay hungry \nstay hungry...stay hungry";
+    mydes.numberOfLines = 0;
+    mydes.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    [mydes sizeToFit];
+    [mainPanel addView:mydes withMargin:LayoutMarginMake(10, 0, 0, 0) archor:eStackPanelArchorType_CenterTop | eStackPanelArchorType_FillWidth];
     
-    UILabel *d2 = [[UILabel alloc] initWithFrame:CGRectZero];
-    d2.text = @"right";
-    [d2 sizeToFit];
-    [dock addView:d2 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Right];
+    GridPanel *countPanel = [[GridPanel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [mainPanel addView:countPanel withMargin:LayoutMarginMake(10, 0, 0, 0) archor:eStackPanelArchorType_CenterTop|eStackPanelArchorType_FillWidth];
     
+    [countPanel setRows:[[NSMutableArray alloc] initWithObjects:@"40", nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"33%", @"33%",@"33%", nil]];
     
-    UILabel *d3 = [[UILabel alloc] initWithFrame:CGRectZero];
-    d3.text = @"top";
-    [d3 sizeToFit];
-    [dock addView:d3 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Top];
+    UILabel *broadCount = [[UILabel alloc] init];
+    broadCount.text = @"微博:1231";
+    [broadCount sizeToFit];
+    broadCount.textAlignment = NSTextAlignmentRight;
+    broadCount.backgroundColor = [UIColor colorWithRed:0.7 green:0.5 blue:0.75 alpha:1];
     
-    UILabel *d4 = [[UILabel alloc] initWithFrame:CGRectZero];
-    d4.text = @"bottom";
-    [d4 sizeToFit];
-    [dock addView:d4 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Bottom];
+    [countPanel addView:broadCount atRow:0 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_RightCenter | eGridPanelArchorType_FillWidth];
     
+    UILabel *followingCount = [[UILabel alloc] init];
+    followingCount.text = @"微博:3123";
+    [followingCount sizeToFit];
+    followingCount.textAlignment = NSTextAlignmentCenter;
+    followingCount.backgroundColor = [UIColor colorWithRed:0.7 green:0.5 blue:0.75 alpha:1];
     
-    UILabel *d5 = [[UILabel alloc] initWithFrame:CGRectZero];
-    d5.text = @"fill";
-    [d5 sizeToFit];
-    [dock addView:d5 withMargin:LayoutMarginMake(1, 1, 1, 1) dock:DockSideType_Fill];
+    [countPanel addView:followingCount atRow:0 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_CenterCenter | eGridPanelArchorType_FillWidth];
+
+    UILabel *followedCount = [[UILabel alloc] init];
+    followedCount.text = @"微博:123";
+    [followedCount sizeToFit];
+    followedCount.textAlignment = NSTextAlignmentLeft;
+    followedCount.backgroundColor = [UIColor colorWithRed:0.7 green:0.5 blue:0.75 alpha:1];
     
-    [self.view addSubview:dock];
+    [countPanel addView:followedCount atRow:0 andColumn:2 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftCenter | eGridPanelArchorType_FillWidth];
+
+    UILabel *myBlog = [[UILabel alloc] init];
+    myBlog.text = @"MY BLOG";
+    [myBlog sizeToFit];
+    myBlog.textAlignment = NSTextAlignmentCenter;
+    myBlog.backgroundColor  = [UIColor colorWithRed:0.4 green:0.5 blue:0.6 alpha:1];
     
-    grid = [[GridPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
-    [grid setRows:[[NSMutableArray alloc] initWithObjects:@"60%", @"40%" , nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"40%", @"60%", nil]] ;
-    grid.backgroundColor = [UIColor whiteColor];
-    // [self.view addSubview:grid];
+    [mainPanel addView:myBlog withMargin:LayoutMarginMake(2, 2, 2, 2) archor:eStackPanelArchorType_CenterTop | eStackPanelArchorType_FillWidth];
     
-    UILabel *name = [[UILabel alloc] init];
-    name.text = @"1";
-    name.textAlignment = NSTextAlignmentCenter;
-    name.backgroundColor = [UIColor greenColor];
+    UILabel *myWeibo = [[UILabel alloc] init];
+    myWeibo.text = @"MY WEIBO";
+    [myWeibo sizeToFit];
+    myWeibo.textAlignment = NSTextAlignmentCenter;
+    myWeibo.backgroundColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.3 alpha:1];
+    [mainPanel addView:myWeibo withMargin:LayoutMarginMake(2, 2, 2, 2) archor: eStackPanelArchorType_CenterTop | eStackPanelArchorType_FillWidth];
     
-    UILabel *pass = [[UILabel alloc] init];
-    pass.text = @"3";
-    pass.textAlignment = NSTextAlignmentCenter;
-    pass.backgroundColor = [UIColor greenColor];
+    DockPanel *dock = [[DockPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    dock.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1];
+    [mainPanel addView:dock withMargin:LayoutMarginMake(2, 2, 2, 2) archor:eStackPanelArchorType_LeftTop | eStackPanelArchorType_Fill];
     
-    UILabel *nameInput = [[UILabel alloc] init];
-    nameInput.textAlignment = NSTextAlignmentCenter;
-    nameInput.text = @"2";
-    nameInput.backgroundColor = [UIColor greenColor];
-    
-    GridPanel * grid1_1= [[GridPanel alloc] init];
-    [grid1_1 setRows:[[NSMutableArray alloc] initWithObjects:@"30%", @"70%", nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"30%",@"70%", nil]];
-    [grid1_1 setBackgroundColor:[UIColor redColor]];
-    
-    [grid addView:name atRow:0 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_CenterCenter | eGridPanelArchorType_FillAll];
-    [grid addView:nameInput atRow:0 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_CenterCenter | eGridPanelArchorType_FillAll];
-    [grid addView:pass atRow:1 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll];
-    [grid addView:grid1_1 atRow:1 andColumn:1 withMargin:LayoutMarginMake(10, 10, 10, 10) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll];
-    
-    UILabel *name1 = [[UILabel alloc] init];
-    name1.text = @"1";
-    name1.textAlignment = NSTextAlignmentCenter;
-    name1.backgroundColor = [UIColor greenColor];
-    
-    [grid1_1 addView:name1 atRow:0 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
-    
-    UILabel *name2 = [[UILabel alloc] init];
-    name2.text = @"2";
-    name2.textAlignment = NSTextAlignmentCenter;
-    name2.backgroundColor = [UIColor greenColor];
-    [grid1_1 addView:name2 atRow:0 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
-    
-    UILabel *name3 = [[UILabel alloc] init];
-    name3.text = @"3";
-    name3.textAlignment = NSTextAlignmentCenter;
-    name3.backgroundColor = [UIColor greenColor];
-    [grid1_1 addView:name3 atRow:1 andColumn:0 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
-    
-    UILabel *name4 = [[UILabel alloc] init];
-    name4.text = @"4";
-    name4.textAlignment = NSTextAlignmentCenter;
-    name4.backgroundColor = [UIColor greenColor];
-    [grid1_1 addView:name4 atRow:1 andColumn:1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eGridPanelArchorType_LeftTop | eGridPanelArchorType_FillAll ] ;
-    
-    
-    tstack = [[StackPanel alloc] initWithFrame:CGRectMake(0, 0, 320, 230)];
-    tstack.backgroundColor = [UIColor redColor];
-    tstack.flowDirector = eStackPanelFlowDirector_BottomToTop;
-    //[self.view addSubview:tstack];
-    
-    UILabel *st1 = [[UILabel alloc] init];
-    st1.text = @"1";
-    [st1 sizeToFit];
-    
-    [tstack addView:st1 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eStackPanelArchorType_RightBottom | eStackPanelArchorType_FillAll];
-    
-    UILabel *st2 = [[UILabel alloc] init];
-    st2.text = @"222222";
-    [st2 sizeToFit];
-    
-    [tstack addView:st2 withMargin:LayoutMarginMake(1, 1, 1, 1) archor:eStackPanelArchorType_RightBottom | eStackPanelArchorType_FillAll];
+    UILabel *bottom = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 100)];
+    bottom.text = @"BOTTOM";
+    [bottom sizeToFit];
+    bottom.backgroundColor = [UIColor redColor];
+    [dock addView:bottom withMargin:LayoutMarginMake(1, 1, 1, 1) dock:  eDockSideType_Bottom];
     
 }
 
@@ -147,19 +116,16 @@
 {
     if (toInterfaceOrientation == UIDeviceOrientationPortrait) {
         NSLog(@"v!!!");
-        CGRect frame = grid.frame;
+        CGRect frame = mainPanel.frame;
         frame.size = CGSizeMake(320, 460);
-        grid.frame = frame;
-        tstack.frame = frame;
-        dock.frame = frame;
+        mainPanel.frame = frame;
+        
     } else if (toInterfaceOrientation == UIDeviceOrientationLandscapeLeft || toInterfaceOrientation == UIDeviceOrientationLandscapeRight)
     {
         NSLog(@"h!!!");
-        CGRect frame = grid.frame;
+        CGRect frame = mainPanel.frame;
         frame.size = CGSizeMake(480, 300);
-        grid.frame = frame;
-        tstack.frame = frame;
-        dock.frame = frame;
+        mainPanel.frame = frame;
     }
 
 }
