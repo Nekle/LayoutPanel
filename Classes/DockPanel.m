@@ -16,6 +16,7 @@
     if (self) {
         // Initialization code
         fillRect = frame;
+        fillRect.origin = CGPointZero;
         elementCount = 0;
     }
     return self;
@@ -25,6 +26,7 @@
 {
     [super setFrame:frame];
     fillRect = frame;
+    fillRect.origin = CGPointZero;
     
     [ self updateLayout ];
 }
@@ -175,19 +177,19 @@
     elementCount += 1;
     BOOL bDocked = NO;
     switch (dock) {
-        case DockSideType_Top:
+        case eDockSideType_Top:
             bDocked = [self element:element dockTopWitMargin:margin];
             break;
-        case DockSideType_Left:
+        case eDockSideType_Left:
             bDocked = [self element:element dockLeftWitMargin:margin];
             break;
-        case DockSideType_Bottom:
+        case eDockSideType_Bottom:
             bDocked = [self element:element dockBottomWitMargin:margin];
             break;
-        case DockSideType_Right:
+        case eDockSideType_Right:
             bDocked = [self element:element dockRightWitMargin:margin];
             break;
-        case DockSideType_Fill:
+        case eDockSideType_Fill:
             bDocked = [self element:element dockFillWitMargin:margin];
             break;
         default:
@@ -207,19 +209,19 @@
         DockSideType dock = dockTypes[i];
         
         switch (dock) {
-            case DockSideType_Top:
+            case eDockSideType_Top:
                 [self element:element dockTopWitMargin:margin];
                 break;
-            case DockSideType_Left:
+            case eDockSideType_Left:
                 [self element:element dockLeftWitMargin:margin];
                 break;
-            case DockSideType_Bottom:
+            case eDockSideType_Bottom:
                 [self element:element dockBottomWitMargin:margin];
                 break;
-            case DockSideType_Right:
+            case eDockSideType_Right:
                 [self element:element dockRightWitMargin:margin];
                 break;
-            case DockSideType_Fill:
+            case eDockSideType_Fill:
                 [self element:element dockFillWitMargin:margin];
                 break;
             default:

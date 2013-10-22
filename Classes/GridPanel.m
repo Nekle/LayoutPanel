@@ -180,14 +180,14 @@ CRect * CRectMake(float x, float y, float width, float height)
     if (fill & eGridPanelArchorType_FillWidth) {
         CGRect frame = element.frame;
         float width = archorRect.size.width - (margin.left + margin.right);
-        frame.size.width = width < 0?0:width;
+        frame.size.width = width < 0? 0 : width;
         element.frame = frame;
     }
     
     if (fill & eGridPanelArchorType_FillHeight) {
         CGRect frame = element.frame;
         float height = archorRect.size.height - (margin.top + margin.bottom);
-        frame.size.height = height < 0? 0: height;
+        frame.size.height = height < 0? 0 : height;
         element.frame = frame;
     }
     
@@ -301,6 +301,7 @@ CRect * CRectMake(float x, float y, float width, float height)
     CGRect archorRect = [self getArchorRectOfRow:row column:column];
     
     [self layout:element in:archorRect withMargin:margin andArchor:archor];
+
 }
 
 - (void)updateLayout

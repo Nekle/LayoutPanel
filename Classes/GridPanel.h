@@ -26,9 +26,9 @@ typedef enum _GridPanelArchorType
     eGridPanelArchorType_RightCenter    = 0x07,
     eGridPanelArchorType_RightBottom    = 0x08,
     
-    eGridPanelArchorType_FillWidth      = 0x100,
-    eGridPanelArchorType_FillHeight     = 0x200,
-    eGridPanelArchorType_FillAll        = 0x100 | 0x200,
+    eGridPanelArchorType_FillWidth      = 0x400,
+    eGridPanelArchorType_FillHeight     = 0x800,
+    eGridPanelArchorType_FillAll        = 0x400 | 0x800,
     
 } GridPanelArchorType;
 

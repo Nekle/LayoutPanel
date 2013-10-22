@@ -34,6 +34,8 @@ typedef enum _StackPanelArchorType{
     eStackPanelArchorType_FillHeight    = 0x200,
     eStackPanelArchorType_FillAll       = 0x100 | 0x200,
     
+    eStackPanelArchorType_Fill          = 0x8000,
+    
 }StackPanelArchorType;
 
 typedef enum _StackPanelFlowDirector

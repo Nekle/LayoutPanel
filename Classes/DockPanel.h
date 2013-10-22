@@ -12,11 +12,11 @@
 #define kDockePanelMaxElements 10
 
 typedef enum _DockSideType {
-    DockSideType_Left,
-    DockSideType_Right,
-    DockSideType_Top,
-    DockSideType_Bottom,
-    DockSideType_Fill,
+    eDockSideType_Left,
+    eDockSideType_Right,
+    eDockSideType_Top,
+    eDockSideType_Bottom,
+    eDockSideType_Fill,
 }DockSideType;
 
 @interface DockPanel : UIView
