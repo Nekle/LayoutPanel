@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S2b-nt-zNb">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Grid Panel View Controller-->
+        <scene sceneID="wYu-tt-fI3">
+            <objects>
+                <viewController id="Kf0-Kb-7zl" customClass="GridPanelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0N0-Gh-XPe"/>
+                        <viewControllerLayoutGuide type="bottom" id="oGu-KI-ICm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Os3-z1-8EQ" customClass="GridPanel">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="gridPanel" destination="Os3-z1-8EQ" id="5vg-TX-hqz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dbc-mi-U1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1226" y="342"/>
+        </scene>
+        <!--Stack Panel View Controller-->
+        <scene sceneID="d7n-N1-118">
+            <objects>
+                <viewController id="S2b-nt-zNb" customClass="StackPanelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cdZ-cc-sEd"/>
+                        <viewControllerLayoutGuide type="bottom" id="D0w-oE-O7S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wIy-9q-YJ6" customClass="StackPanel">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainPanel" destination="wIy-9q-YJ6" id="gKg-Gp-hpl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ezy-G6-BDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="525" y="342"/>
+        </scene>
+        <!--Dock Panel View Controller-->
+        <scene sceneID="B1D-Fe-Djn">
+            <objects>
+                <viewController id="x4F-tC-xjL" customClass="DockPanelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Lp-c2-vl9"/>
+                        <viewControllerLayoutGuide type="bottom" id="h01-Rs-fpr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aWs-Uc-WgP" customClass="DockPanel">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="dockPanel" destination="aWs-Uc-WgP" id="f4H-83-MM0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="foo-BI-plk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872" y="331"/>
+        </scene>
+    </scenes>
+</document>
