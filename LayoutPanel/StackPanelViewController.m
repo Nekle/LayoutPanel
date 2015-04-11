@@ -34,7 +34,7 @@
     mainPanel.defaultArchorType = eStackPanelArchorType_CenterTop;
     
     UILabel *myname = [[UILabel alloc] init];
-    myname.text = @"这是名字";
+    myname.text = @"Title";
     myname.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
     myname.textAlignment = NSTextAlignmentCenter;
     [myname sizeToFit];
@@ -43,16 +43,16 @@
     UILabel *mydes = [[UILabel alloc] init];
     myname.textAlignment = NSTextAlignmentCenter;
     mydes.lineBreakMode = NSLineBreakByWordWrapping;
-    mydes.text = @"DESCRIPTION: \nstay hungry...stay hungry \nstay hungry...stay hungry \nstay hungry...stay hungry";
+    mydes.text = @"DESCRIPTION: \nthis is a label \nswill be added in StackPanel \nyou can set its margins";
     mydes.numberOfLines = 0;
     mydes.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [mydes sizeToFit];
-    [mainPanel addView:mydes withMargin:LayoutMarginMake(10, 0, 0, 0) archor:eStackPanelArchorType_CenterTop | eStackPanelArchorType_FillWidth];
+    [mainPanel addView:mydes withMargin:LayoutMarginMake(10, 10, 0, 10) archor:eStackPanelArchorType_CenterTop | eStackPanelArchorType_FillWidth];
     
     GridPanel *countPanel = [[GridPanel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [mainPanel addView:countPanel withMargin:LayoutMarginMake(10, 0, 0, 0) archor:eStackPanelArchorType_CenterTop|eStackPanelArchorType_FillWidth];
+    [mainPanel addView:countPanel withMargin:LayoutMarginMake(0, 0, 0, 0) archor:eStackPanelArchorType_CenterTop|eStackPanelArchorType_FillWidth];
     
-    [countPanel setRows:[[NSMutableArray alloc] initWithObjects:@"40", nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"33%", @"33%",@"33%", nil]];
+    [countPanel setRows:[[NSMutableArray alloc] initWithObjects:@"40", nil] andColumn:[[NSMutableArray alloc] initWithObjects:@"33.3%", @"33.4%",@"33.3%", nil]];
     
     UILabel *broadCount = [[UILabel alloc] init];
     broadCount.text = @"微博:1231";
