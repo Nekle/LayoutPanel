@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6009D4DA1ADA0785008908F7 /* DockPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009D4D31ADA0785008908F7 /* DockPanel.m */; };
+		6009D4DB1ADA0785008908F7 /* GridPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009D4D51ADA0785008908F7 /* GridPanel.m */; };
+		6009D4DC1ADA0785008908F7 /* PanelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009D4D71ADA0785008908F7 /* PanelUtil.m */; };
+		6009D4DD1ADA0785008908F7 /* StackPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009D4D91ADA0785008908F7 /* StackPanel.m */; };
 		602317081AD809950092AB7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 602317071AD809950092AB7D /* main.m */; };
 		6023170B1AD809950092AB7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6023170A1AD809950092AB7D /* AppDelegate.m */; };
 		602317131AD809950092AB7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 602317121AD809950092AB7D /* Images.xcassets */; };
 		602317161AD809950092AB7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602317141AD809950092AB7D /* LaunchScreen.xib */; };
 		602317221AD809950092AB7D /* LayoutPanelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 602317211AD809950092AB7D /* LayoutPanelTests.m */; };
-		602317341AD809C80092AB7D /* DockPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6023172D1AD809C80092AB7D /* DockPanel.m */; };
-		602317351AD809C80092AB7D /* GridPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6023172F1AD809C80092AB7D /* GridPanel.m */; };
-		602317361AD809C80092AB7D /* PanelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 602317301AD809C80092AB7D /* PanelUtil.m */; };
-		602317371AD809C80092AB7D /* StackPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 602317321AD809C80092AB7D /* StackPanel.m */; };
 		6023173F1AD80B5E0092AB7D /* GridPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602317391AD80B5E0092AB7D /* GridPanelViewController.m */; };
 		602317401AD80B5E0092AB7D /* DockPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6023173B1AD80B5E0092AB7D /* DockPanelViewController.m */; };
 		602317411AD80B5E0092AB7D /* StackPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6023173D1AD80B5E0092AB7D /* StackPanelViewController.m */; };
@@ -35,6 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6009D4D21ADA0785008908F7 /* DockPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockPanel.h; sourceTree = "<group>"; };
+		6009D4D31ADA0785008908F7 /* DockPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockPanel.m; sourceTree = "<group>"; };
+		6009D4D41ADA0785008908F7 /* GridPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPanel.h; sourceTree = "<group>"; };
+		6009D4D51ADA0785008908F7 /* GridPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPanel.m; sourceTree = "<group>"; };
+		6009D4D61ADA0785008908F7 /* PanelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelUtil.h; sourceTree = "<group>"; };
+		6009D4D71ADA0785008908F7 /* PanelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelUtil.m; sourceTree = "<group>"; };
+		6009D4D81ADA0785008908F7 /* StackPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackPanel.h; sourceTree = "<group>"; };
+		6009D4D91ADA0785008908F7 /* StackPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackPanel.m; sourceTree = "<group>"; };
 		602317021AD809950092AB7D /* LayoutPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		602317061AD809950092AB7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		602317071AD809950092AB7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,14 +53,6 @@
 		6023171B1AD809950092AB7D /* LayoutPanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LayoutPanelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		602317201AD809950092AB7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		602317211AD809950092AB7D /* LayoutPanelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutPanelTests.m; sourceTree = "<group>"; };
-		6023172C1AD809C80092AB7D /* DockPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DockPanel.h; path = ../DockPanel.h; sourceTree = "<group>"; };
-		6023172D1AD809C80092AB7D /* DockPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DockPanel.m; path = ../DockPanel.m; sourceTree = "<group>"; };
-		6023172E1AD809C80092AB7D /* GridPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GridPanel.h; path = ../GridPanel.h; sourceTree = "<group>"; };
-		6023172F1AD809C80092AB7D /* GridPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GridPanel.m; path = ../GridPanel.m; sourceTree = "<group>"; };
-		602317301AD809C80092AB7D /* PanelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PanelUtil.m; path = ../PanelUtil.m; sourceTree = "<group>"; };
-		602317311AD809C80092AB7D /* StackPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackPanel.h; path = ../StackPanel.h; sourceTree = "<group>"; };
-		602317321AD809C80092AB7D /* StackPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackPanel.m; path = ../StackPanel.m; sourceTree = "<group>"; };
-		602317331AD809C80092AB7D /* PanelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelUtil.h; path = ../PanelUtil.h; sourceTree = "<group>"; };
 		602317381AD80B5E0092AB7D /* GridPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPanelViewController.h; sourceTree = "<group>"; };
 		602317391AD80B5E0092AB7D /* GridPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPanelViewController.m; sourceTree = "<group>"; };
 		6023173A1AD80B5E0092AB7D /* DockPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockPanelViewController.h; sourceTree = "<group>"; };
@@ -89,12 +89,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6009D4D11ADA0785008908F7 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				6009D4D21ADA0785008908F7 /* DockPanel.h */,
+				6009D4D31ADA0785008908F7 /* DockPanel.m */,
+				6009D4D41ADA0785008908F7 /* GridPanel.h */,
+				6009D4D51ADA0785008908F7 /* GridPanel.m */,
+				6009D4D61ADA0785008908F7 /* PanelUtil.h */,
+				6009D4D71ADA0785008908F7 /* PanelUtil.m */,
+				6009D4D81ADA0785008908F7 /* StackPanel.h */,
+				6009D4D91ADA0785008908F7 /* StackPanel.m */,
+			);
+			name = Panel;
+			path = LayoutPanel/Panel;
+			sourceTree = "<group>";
+		};
 		602316F91AD809950092AB7D = {
 			isa = PBXGroup;
 			children = (
 				60425A541AD8D923009A2945 /* LayoutPanel.podspec */,
 				60425A551AD8D923009A2945 /* README.md */,
-				60425A531AD8D8E6009A2945 /* Classes */,
+				6009D4D11ADA0785008908F7 /* Panel */,
 				602317041AD809950092AB7D /* LayoutPanel */,
 				6023171E1AD809950092AB7D /* LayoutPanelTests */,
 				602317031AD809950092AB7D /* Products */,
@@ -154,22 +170,6 @@
 				602317201AD809950092AB7D /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		60425A531AD8D8E6009A2945 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				6023172C1AD809C80092AB7D /* DockPanel.h */,
-				6023172D1AD809C80092AB7D /* DockPanel.m */,
-				6023172E1AD809C80092AB7D /* GridPanel.h */,
-				6023172F1AD809C80092AB7D /* GridPanel.m */,
-				602317301AD809C80092AB7D /* PanelUtil.m */,
-				602317311AD809C80092AB7D /* StackPanel.h */,
-				602317321AD809C80092AB7D /* StackPanel.m */,
-				602317331AD809C80092AB7D /* PanelUtil.h */,
-			);
-			name = Classes;
-			path = LayoutPanel/Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,15 +274,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				602317411AD80B5E0092AB7D /* StackPanelViewController.m in Sources */,
-				602317351AD809C80092AB7D /* GridPanel.m in Sources */,
 				60425A571AD8D923009A2945 /* README.md in Sources */,
 				6023173F1AD80B5E0092AB7D /* GridPanelViewController.m in Sources */,
-				602317371AD809C80092AB7D /* StackPanel.m in Sources */,
-				602317361AD809C80092AB7D /* PanelUtil.m in Sources */,
+				6009D4DD1ADA0785008908F7 /* StackPanel.m in Sources */,
 				602317401AD80B5E0092AB7D /* DockPanelViewController.m in Sources */,
+				6009D4DB1ADA0785008908F7 /* GridPanel.m in Sources */,
+				6009D4DC1ADA0785008908F7 /* PanelUtil.m in Sources */,
 				6023170B1AD809950092AB7D /* AppDelegate.m in Sources */,
+				6009D4DA1ADA0785008908F7 /* DockPanel.m in Sources */,
 				602317081AD809950092AB7D /* main.m in Sources */,
-				602317341AD809C80092AB7D /* DockPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
