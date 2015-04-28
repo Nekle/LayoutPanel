@@ -4,7 +4,6 @@ LayoutPanel 是一个 view 排布器, 你可以随意的将你的 view 添加到
 
 [介绍博客 link](http://nekle.github.io/2013/10/23/iOS%E8%87%AA%E5%8A%A8%E6%8E%92%E5%B8%83%E5%99%A8--LayoutPanel.html)
 
->![img](http://farm4.staticflickr.com/3684/9719064830_001b26b167.jpg)
 
 这幅图展示了StackPanel排布器的基本用法.
 你可以很方便的构建一个 dock 菜单, 比如上图中的右侧菜单,或者下方的应用 dock, 或者按钮工具条.
